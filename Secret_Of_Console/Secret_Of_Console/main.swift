@@ -10,7 +10,7 @@ import Foundation
 
 // Type de personnage
 enum CharacterType {
-    case Human
+    case Fighter
     case Magus
     case Colossus
     case Dwarf
