@@ -14,3 +14,10 @@ enum CharacterType {
     case Colossus
     case Dwarf
 }
+
+enum WeaponType {
+    case Sword
+    case Scepter
+    case Mass
+    case Axe
+}
