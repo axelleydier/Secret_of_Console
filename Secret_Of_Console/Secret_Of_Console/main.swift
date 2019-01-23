@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Type de personnage
 enum CharacterType {
     case Human
     case Magus
@@ -15,6 +16,7 @@ enum CharacterType {
     case Dwarf
 }
 
+// Type d'arme
 enum WeaponType {
     case Sword
     case Scepter
