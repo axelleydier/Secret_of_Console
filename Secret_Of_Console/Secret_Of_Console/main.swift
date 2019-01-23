@@ -8,5 +8,9 @@
 
 import Foundation
 
-print("Hello, World!")
-
+enum CharacterType {
+    case Human
+    case Magus
+    case Colossus
+    case Dwarf
+}
