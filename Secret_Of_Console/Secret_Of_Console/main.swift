@@ -15,6 +15,7 @@ enum CharacterType {
     case Colossus
     case Dwarf
     
+    // Description des personnages
     var description: String {
         switch self {
         case .Fighter:
@@ -36,6 +37,7 @@ enum WeaponType {
     case Mass
     case Axe
     
+    // Description des armes
     var description: String {
         switch self {
         case .Sword:
