@@ -14,6 +14,19 @@ enum CharacterType {
     case Magus
     case Colossus
     case Dwarf
+    
+    var description: String {
+        switch self {
+        case .Fighter:
+            return "Combattant"
+        case .Magus:
+            return "Mage"
+        case .Colossus:
+            return "Colosse"
+        case .Dwarf:
+            return "Nain"
+        }
+    }
 }
 
 // Type d'arme
@@ -22,4 +35,17 @@ enum WeaponType {
     case Scepter
     case Mass
     case Axe
+    
+    var description: String {
+        switch self {
+        case .Sword:
+            return "Epee"
+        case .Scepter:
+            return "Sceptre"
+        case .Mass:
+            return "Masse"
+        case .Axe:
+            return "Hache"
+        }
+    }
 }
