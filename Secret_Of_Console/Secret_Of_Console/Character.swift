@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+// Type de personnage
+enum CharacterType {
+    case Fighter
+    case Magus
+    case Colossus
+    case Dwarf
+    
+    // Description des personnages
+    var description: String {
+        switch self {
+        case .Fighter:
+            return "Combattant"
+        case .Magus:
+            return "Mage"
+        case .Colossus:
+            return "Colosse"
+        case .Dwarf:
+            return "Nain"
+        }
+    }
+}
