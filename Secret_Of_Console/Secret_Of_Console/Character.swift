@@ -29,3 +29,25 @@ enum CharacterType {
         }
     }
 }
+
+class Character {
+    
+    let name: String
+    let type: CharacterType
+    var weapon: Weapon
+    
+    init(name: String, type: CharacterType) {
+        self.name = name
+        self.type = type
+        switch type {
+        case .Fighter:
+            self.weapon = Weapon(type: .Sword)
+        case .Magus:
+            self.weapon = Weapon(type: .Scepter)
+        case .Colossus:
+            self.weapon = Weapon(type: .Mass)
+        case .Dwarf:
+            self.weapon = Weapon(type: .Axe)
+        }
+    }
+}
