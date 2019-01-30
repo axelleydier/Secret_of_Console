@@ -13,7 +13,6 @@ class Game {
     func start() {
         print("Le jeu a démarré")
         settings()
-        play()
     }
     
     func settings() {
@@ -23,6 +22,26 @@ class Game {
         //              Choix du type de perso
         //              Choix du nom du personnage
         // On démarre le jeu on appelle la fonction play()
+        var NumberOfTeam = 0
+        while NumberOfTeam != 2 {
+            print ("Choisissez le nom de votre equipe")
+            if let TeamName = readLine(){
+                print ("Bonjour \(TeamName) choisissez vos personnages")
+                
+                var NumberOfCharacter = 0
+                while NumberOfCharacter != 3 {
+                    print("Choisissez le type de personnage que vous voulez jouer (l'opération sera répété 3 fois)")
+                    //              Choix du type de perso
+                    if let NameCharacter = readLine(){
+                        print("Bonjour \(NameCharacter)")
+                    }
+                    NumberOfCharacter += 1
+                }
+            }
+            
+            NumberOfTeam += 1
+        }
+        play()
     }
     
     func play() {
