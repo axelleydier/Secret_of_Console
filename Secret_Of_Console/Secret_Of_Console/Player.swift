@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+class Player {
+    
+    let name: String
+    
+    var characters: [Character]
+    
+    init(name: String) {
+        self.name = name
+        self.characters = []
+    }
+}

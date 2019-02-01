@@ -10,9 +10,13 @@ import Foundation
 
 class Game {
     
+    var players: [Player] = []
+    
     func start() {
         print("Le jeu a démarré")
         settings()
+        play()
+        end()
     }
     
     func settings() {
@@ -22,27 +26,37 @@ class Game {
         //              Choix du type de perso
         //              Choix du nom du personnage
         // On démarre le jeu on appelle la fonction play()
-        var NumberOfTeam = 0
-        while NumberOfTeam != 2 {
-            print ("Choisissez le nom de votre equipe")
-            if let TeamName = readLine(){
-                print ("Bonjour \(TeamName) choisissez vos personnages")
-                
-                var NumberOfCharacter = 0
-                while NumberOfCharacter != 3 {
-                    print("Choisissez le type de personnage que vous voulez jouer (l'opération sera répété 3 fois)")
-                    //              Choix du type de perso
-                    if let NameCharacter = readLine(){
-                        print("Bonjour \(NameCharacter)")
-                    }
-                    NumberOfCharacter += 1
+        
+        for playerIndex in 1...2 {
+            
+            print("Joueur \(playerIndex): Merci de rentrer votre nom: ")
+            
+            var name = ""
+            var nameCounter = 0
+            repeat {
+                if nameCounter >= 1 {
+                    print("Merci de rentrer un nom NON VIDE")
                 }
+                if let _name = readLine() {
+                    name = _name
+                }
+                nameCounter += 1
+            } while name.isEmpty
+            
+            let player = Player(name: name)
+            
+            for _ in 1...3 {
+                
+                
+                
+                let character = Character(name: "Toto", type: .Colossus)
+                player.characters.append(character)
             }
             
-            NumberOfTeam += 1
+            players.append(player)
         }
-        play()
     }
+
     
     func play() {
         
@@ -57,11 +71,29 @@ class Game {
         //      }
         //      Résolution de l'action/du combat
         // On appelle la fin du jeu
-        end()
     }
     
     func end() {
         print("Fin du jeu")
         // Afficher le récap total.
+    }
+}
+class Test {
+    
+    func toto() {
+        
+        if let stringInput = readLine() {
+            
+            switch stringInput {
+            case "1":
+                break
+            case "2":
+                break
+            default:
+                break
+            }
+            
+        }
+        
     }
 }
