@@ -30,6 +30,21 @@ enum CharacterType {
     }
 }
 
+extension CharacterType {
+    init(choice: String) {
+        switch choice {
+        case "1":
+            self = .Magus
+        case "2":
+            self = .Colossus
+        case "3":
+            self = .Dwarf
+        default:
+            self = .Fighter
+        }
+    }
+}
+
 class Character {
     
     let name: String

@@ -45,12 +45,35 @@ class Game {
             
             let player = Player(name: name)
             
+            print("Joueur \(playerIndex): Merci de rentrer 3 chiffres correspondand à 3 personnages")
+            
             for _ in 1...3 {
                 
                 
+                guard let stringInput = readLine() else {
+                    return
+                }
                 
-                let character = Character(name: "Toto", type: .Colossus)
-                player.characters.append(character)
+                switch stringInput {
+                case "1":
+                    print("Vous avez choisi le", CharacterType.Magus.description, "!")
+                    break
+                case "2":
+                    print("Vous avez choisi le", CharacterType.Colossus.description, "!")
+                    break
+                case "3":
+                    print("Vous avez choisi le", CharacterType.Dwarf.description, "!")
+                    break
+                default:
+                    print("Vous avez choisi le", CharacterType.Fighter.description, "!")
+                    break
+                }
+                
+                print("Comment il/elle s'appelle ?")
+                if let characterName = readLine(){
+                    let character = Character(name: characterName, type: CharacterType(choice: stringInput))
+                    player.characters.append(character)
+                }
             }
             
             players.append(player)
@@ -76,24 +99,5 @@ class Game {
     func end() {
         print("Fin du jeu")
         // Afficher le récap total.
-    }
-}
-class Test {
-    
-    func toto() {
-        
-        if let stringInput = readLine() {
-            
-            switch stringInput {
-            case "1":
-                break
-            case "2":
-                break
-            default:
-                break
-            }
-            
-        }
-        
     }
 }
