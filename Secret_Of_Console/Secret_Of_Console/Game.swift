@@ -45,10 +45,9 @@ class Game {
             
             let player = Player(name: name)
             
-            print("Joueur \(playerIndex): Merci de rentrer 3 chiffres correspondand à 3 personnages")
-            
-            for _ in 1...3 {
+            for characterIndex in 1...3 {
                 
+                print("Joueur \(playerIndex): Merci de rentrer le \(characterIndex)e chiffre correspondand au \(characterIndex)e personnage")
                 
                 guard let stringInput = readLine() else {
                     return
