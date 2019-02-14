@@ -47,7 +47,15 @@ class Game {
             
             for characterIndex in 1...3 {
                 
-                print("Joueur \(playerIndex): Merci de rentrer le \(characterIndex)e chiffre correspondand au \(characterIndex)e personnage")
+                if characterIndex == 3
+                {
+                    print("Joueur \(playerIndex): Merci de rentrer le dernier chiffre correspondand au dernier personnage")
+                }
+                
+                else
+                {
+                    print("Joueur \(playerIndex): Merci de rentrer le \(characterIndex)e chiffre correspondand au \(characterIndex)e personnage")
+                }
                 
                 guard let stringInput = readLine() else {
                     return
