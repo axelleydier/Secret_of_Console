@@ -64,16 +64,12 @@ class Game {
                 switch stringInput {
                 case "1":
                     print("Vous avez choisi le", CharacterType.Magus.description, "!")
-                    break
                 case "2":
                     print("Vous avez choisi le", CharacterType.Colossus.description, "!")
-                    break
                 case "3":
                     print("Vous avez choisi le", CharacterType.Dwarf.description, "!")
-                    break
                 default:
                     print("Vous avez choisi le", CharacterType.Fighter.description, "!")
-                    break
                 }
                 
                 print("Comment il/elle s'appelle ?")
