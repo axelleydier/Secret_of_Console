@@ -8,14 +8,14 @@
 
 import Foundation
 
-// Type de personnage
+/// Kind of character
 enum CharacterType {
     case Fighter
     case Magus
     case Colossus
     case Dwarf
     
-    // Description des personnages
+    /// Description of characters
     var description: String {
         switch self {
         case .Fighter:
@@ -31,7 +31,7 @@ enum CharacterType {
 }
 
 extension CharacterType {
-    init(choice: String) {
+    init?(choice: String) {
         switch choice {
         case "1":
             self = .Magus
@@ -40,7 +40,7 @@ extension CharacterType {
         case "3":
             self = .Dwarf
         default:
-            self = .Fighter
+            return nil
         }
     }
 }

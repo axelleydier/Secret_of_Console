@@ -8,14 +8,14 @@
 
 import Foundation
 
-// Type d'arme
+/// Kind of weapon
 enum WeaponType {
     case Sword
     case Scepter
     case Mass
     case Axe
     
-    // Description des armes
+    /// Description of weapons
     var description: String {
         switch self {
         case .Sword:

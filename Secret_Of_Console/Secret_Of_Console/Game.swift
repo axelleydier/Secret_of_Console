@@ -10,6 +10,9 @@ import Foundation
 
 class Game {
     
+    static let maxPlayersNumber = 2
+    static let maxCharactersNumber = 3
+    
     var players: [Player] = []
     
     func start() {
@@ -20,14 +23,7 @@ class Game {
     }
     
     func settings() {
-        // Répéter 2x:
-        //      Choix du nom de l'équipe
-        //      Répéter 3x:
-        //              Choix du type de perso
-        //              Choix du nom du personnage
-        // On démarre le jeu on appelle la fonction play()
-        
-        for playerIndex in 1...2 {
+        for playerIndex in 1...Game.maxPlayersNumber {
             
             print("Joueur \(playerIndex): Merci de rentrer votre nom: ")
             
@@ -45,36 +41,30 @@ class Game {
             
             let player = Player(name: name)
             
-            for characterIndex in 1...3 {
+            for characterIndex in 1...Game.maxCharactersNumber {
                 
-                if characterIndex == 3
-                {
+                if characterIndex == Game.maxCharactersNumber {
                     print("Joueur \(playerIndex): Merci de rentrer le dernier chiffre correspondand au dernier personnage")
-                }
-                
-                else
-                {
+                } else {
                     print("Joueur \(playerIndex): Merci de rentrer le \(characterIndex)e chiffre correspondand au \(characterIndex)e personnage")
                 }
+                var chosenCharacterType: CharacterType?
                 
-                guard let stringInput = readLine() else {
-                    return
-                }
-                
-                switch stringInput {
-                case "1":
-                    print("Vous avez choisi le", CharacterType.Magus.description, "!")
-                case "2":
-                    print("Vous avez choisi le", CharacterType.Colossus.description, "!")
-                case "3":
-                    print("Vous avez choisi le", CharacterType.Dwarf.description, "!")
-                default:
-                    print("Vous avez choisi le", CharacterType.Fighter.description, "!")
-                }
+                repeat {
+                    
+                    guard let stringInput = readLine() else {
+                        return
+                    }
+                    if let characterType = CharacterType(choice: stringInput){
+                        print("Vous avez choisi le : \(characterType.description)")
+                        chosenCharacterType = characterType
+                    }
+            
+                } while chosenCharacterType == nil
                 
                 print("Comment il/elle s'appelle ?")
-                if let characterName = readLine(){
-                    let character = Character(name: characterName, type: CharacterType(choice: stringInput))
+                if let characterName = readLine(), let _chosenCharacterType = chosenCharacterType{
+                    let character = Character(name: characterName, type: _chosenCharacterType)
                     player.characters.append(character)
                 }
             }
