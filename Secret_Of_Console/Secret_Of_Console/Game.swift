@@ -27,52 +27,77 @@ class Game {
             
             print("Joueur \(playerIndex): Merci de rentrer votre nom: ")
             
-            var name = ""
-            var nameCounter = 0
-            repeat {
-                if nameCounter >= 1 {
-                    print("Merci de rentrer un nom NON VIDE")
-                }
-                if let _name = readLine() {
-                    name = _name
-                }
-                nameCounter += 1
-            } while name.isEmpty
+            let player = createPlayer()
             
-            let player = Player(name: name)
-            
-            for characterIndex in 1...Game.maxCharactersNumber {
-                
-                if characterIndex == Game.maxCharactersNumber {
-                    print("Joueur \(playerIndex): Merci de rentrer le dernier chiffre correspondand au dernier personnage")
-                } else {
-                    print("Joueur \(playerIndex): Merci de rentrer le \(characterIndex)e chiffre correspondand au \(characterIndex)e personnage")
-                }
-                var chosenCharacterType: CharacterType?
-                
-                repeat {
-                    
-                    guard let stringInput = readLine() else {
-                        return
-                    }
-                    if let characterType = CharacterType(choice: stringInput){
-                        print("Vous avez choisi le : \(characterType.description)")
-                        chosenCharacterType = characterType
-                    }
-            
-                } while chosenCharacterType == nil
-                
-                print("Comment il/elle s'appelle ?")
-                if let characterName = readLine(), let _chosenCharacterType = chosenCharacterType{
-                    let character = Character(name: characterName, type: _chosenCharacterType)
-                    player.characters.append(character)
-                }
+            for _ in 1...Game.maxCharactersNumber {
+                let character = createCharacter()
+                player.characters.append(character)
             }
             
             players.append(player)
         }
     }
-
+    
+    private func createPlayer() -> Player {
+        var name = ""
+        var nameCounter = 0
+        repeat {
+            if nameCounter >= 1 {
+                print("Merci de rentrer un nom NON VIDE")
+            }
+            if let _name = readLine() {
+                name = _name
+            }
+            nameCounter += 1
+        } while name.isEmpty
+        
+        let player = Player(name: name)
+        return player
+    }
+    
+    func createCharacter() -> Character {
+        print("Choisissez un personnage dans la liste: ")
+        
+        var typeCounter = 1
+        CharacterType.allCases.forEach { type in
+            print("\(typeCounter): \(type.rawValue)")
+            typeCounter += 1
+        }
+        
+        var chosenCharacterType: CharacterType?
+        var characterTypeCounter = 0
+        repeat {
+            if characterTypeCounter >= 1 {
+                print("Merci de rentrer de choisir un numéro dans la liste")
+            }
+            if let stringInput = readLine() {
+                if let characterType = CharacterType(choice: stringInput) {
+                    chosenCharacterType = characterType
+                }
+            } else {
+                chosenCharacterType = nil
+            }
+            characterTypeCounter += 1
+        } while chosenCharacterType == nil
+        
+        print("Comment il/elle s'appelle ?")
+        var chosenCharacterName = ""
+        var characterNameCounter = 0
+        repeat {
+            if characterNameCounter >= 1 {
+                print("Merci de rentrer un nom non vide.")
+            }
+            if let stringInput = readLine() {
+                chosenCharacterName = stringInput
+            } else {
+                chosenCharacterName = ""
+            }
+            characterNameCounter += 1
+        } while chosenCharacterName.isEmpty
+        
+        let character = Character(name: chosenCharacterName, type: chosenCharacterType!)
+        return character
+    }
     
     func play() {
         

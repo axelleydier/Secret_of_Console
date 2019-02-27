@@ -9,36 +9,24 @@
 import Foundation
 
 /// Kind of character
-enum CharacterType {
-    case Fighter
-    case Magus
-    case Colossus
-    case Dwarf
-    
-    /// Description of characters
-    var description: String {
-        switch self {
-        case .Fighter:
-            return "Combattant"
-        case .Magus:
-            return "Mage"
-        case .Colossus:
-            return "Colosse"
-        case .Dwarf:
-            return "Nain"
-        }
-    }
+enum CharacterType: String, CaseIterable {
+    case magus = "Mage"
+    case colossus = "Colosse"
+    case dwarf = "Nain"
+    case warrior = "Guerrier"
 }
 
 extension CharacterType {
     init?(choice: String) {
         switch choice {
         case "1":
-            self = .Magus
+            self = .magus
         case "2":
-            self = .Colossus
+            self = .colossus
         case "3":
-            self = .Dwarf
+            self = .dwarf
+        case "4":
+            self = .warrior
         default:
             return nil
         }
@@ -55,13 +43,13 @@ class Character {
         self.name = name
         self.type = type
         switch type {
-        case .Fighter:
+        case .warrior:
             self.weapon = Weapon(type: .Sword)
-        case .Magus:
+        case .magus:
             self.weapon = Weapon(type: .Scepter)
-        case .Colossus:
+        case .colossus:
             self.weapon = Weapon(type: .Mass)
-        case .Dwarf:
+        case .dwarf:
             self.weapon = Weapon(type: .Axe)
         }
     }
