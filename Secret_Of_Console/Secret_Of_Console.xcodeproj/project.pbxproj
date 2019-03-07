@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DD094EF21FB4971003A87AE /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD094EE21FB4971003A87AE /* Character.swift */; };
+		1DD094F121FB49FD003A87AE /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD094F021FB49FD003A87AE /* Weapon.swift */; };
+		1DD094F321FB4AEB003A87AE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD094F221FB4AEB003A87AE /* Game.swift */; };
+		1DD094F521FB4AFC003A87AE /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD094F421FB4AFC003A87AE /* Player.swift */; };
 		1DDE042F21F86F5F00F5E521 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDE042E21F86F5F00F5E521 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +27,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1DD094EE21FB4971003A87AE /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		1DD094F021FB49FD003A87AE /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		1DD094F221FB4AEB003A87AE /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		1DD094F421FB4AFC003A87AE /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		1DDE042B21F86F5F00F5E521 /* Secret_Of_Console */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Secret_Of_Console; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DDE042E21F86F5F00F5E521 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				1DDE042E21F86F5F00F5E521 /* main.swift */,
+				1DD094F421FB4AFC003A87AE /* Player.swift */,
+				1DD094F221FB4AEB003A87AE /* Game.swift */,
+				1DD094F021FB49FD003A87AE /* Weapon.swift */,
+				1DD094EE21FB4971003A87AE /* Character.swift */,
 			);
 			path = Secret_Of_Console;
 			sourceTree = "<group>";
@@ -120,6 +132,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DDE042F21F86F5F00F5E521 /* main.swift in Sources */,
+				1DD094EF21FB4971003A87AE /* Character.swift in Sources */,
+				1DD094F121FB49FD003A87AE /* Weapon.swift in Sources */,
+				1DD094F521FB4AFC003A87AE /* Player.swift in Sources */,
+				1DD094F321FB4AEB003A87AE /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
