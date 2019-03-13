@@ -30,13 +30,29 @@ enum WeaponType {
     }
 }
 
+enum ActionType {
+    case damage(value: Int)
+    case heal(value: Int)
+}
+
 class Weapon {
     
     let name: String
     let type: WeaponType
+    let action: ActionType
     
     init(type: WeaponType) {
         self.type = type
         self.name = type.description
+        switch type {
+        case .Sword:
+            self.action = .damage(value: 45)
+        case .Scepter:
+            self.action = .heal(value: 55)
+        case .Mass:
+            self.action = .damage(value: 25)
+        case .Axe:
+            self.action = .damage(value: 65)
+        }
     }
 }

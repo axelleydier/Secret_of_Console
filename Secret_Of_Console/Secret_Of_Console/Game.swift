@@ -14,6 +14,7 @@ class Game {
     static let maxCharactersNumber = 3
     
     var players: [Player] = []
+    var names: [String] = []
     
     func start() {
         print("Le jeu a démarré")
@@ -43,13 +44,14 @@ class Game {
         var nameCounter = 0
         repeat {
             if nameCounter >= 1 {
-                print("Merci de rentrer un nom NON VIDE")
+                print("Merci de rentrer un nom NON VIDE et pas utilisé")
             }
             if let _name = readLine() {
                 name = _name
             }
             nameCounter += 1
-        } while name.isEmpty
+        } while name.isEmpty || names.contains(name)
+        names.append(name)
         
         let player = Player(name: name)
         return player
@@ -64,6 +66,20 @@ class Game {
             typeCounter += 1
         }
         
+        
+        let chosenCharacterType = chooseCharacterType()
+        
+        
+        print("Comment il/elle s'appelle ?")
+        
+        let chosenCharacterName = chooseCharacterName()
+        names.append(chosenCharacterName)
+        
+        let character = Character(name: chosenCharacterName, type: chosenCharacterType)
+        return character
+    }
+    
+    func chooseCharacterType() -> CharacterType {
         var chosenCharacterType: CharacterType?
         var characterTypeCounter = 0
         repeat {
@@ -80,27 +96,29 @@ class Game {
             characterTypeCounter += 1
         } while chosenCharacterType == nil
         
-        print("Comment il/elle s'appelle ?")
+        return chosenCharacterType!
+    }
+    
+    func chooseCharacterName() -> String {
         var chosenCharacterName = ""
         var characterNameCounter = 0
         repeat {
             if characterNameCounter >= 1 {
-                print("Merci de rentrer un nom non vide.")
+                print("Merci de rentrer un nom non vide et non utilisé")
             }
-            if let stringInput = readLine() {
-                chosenCharacterName = stringInput
+            if let _name = readLine() {
+                chosenCharacterName = _name
             } else {
                 chosenCharacterName = ""
             }
             characterNameCounter += 1
-        } while chosenCharacterName.isEmpty
-        
-        let character = Character(name: chosenCharacterName, type: chosenCharacterType!)
-        return character
+        } while chosenCharacterName.isEmpty || names.contains(chosenCharacterName)
+        return chosenCharacterName
     }
     
     func play() {
-        
+        repeat {
+        } while players[0].characters.contains(where: {$0.isAlive}) && players[1].characters.contains(where: {$0.isAlive})
         // Répéter tant que les 2 équipes ont au moins un personnage vivant
         //      Afficher le récap des 2 équipes (noms + pv etc..)
         //      Joueur 1 sélectionne un perso de son équipe
