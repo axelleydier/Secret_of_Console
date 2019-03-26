@@ -86,3 +86,8 @@ class Character {
         }
     }
 }
+extension Character: CustomStringConvertible {
+    var description: String {
+        return "\(self.name) \(self.type) \(self.life)"
+    }
+}

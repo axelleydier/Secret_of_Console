@@ -116,9 +116,32 @@ class Game {
         return chosenCharacterName
     }
     
+    private func printRecap() {
+        players.forEach { (player) in
+            print(player.name)
+            
+            player.characters.forEach({ (character) in
+                print(character.description)
+            })
+        }
+    }
+    
     func play() {
         repeat {
-        } while players[0].characters.contains(where: {$0.isAlive}) && players[1].characters.contains(where: {$0.isAlive})
+            let attacker = players[0]
+            let defender = players[1]
+            let characterAttacker = attacker.characters[0]
+            let charaterDefender = defender.characters[0]
+            
+            charaterDefender.updateLife(with: characterAttacker.weapon.action)
+
+            printRecap()
+            
+            players.swapAt(0, 1)
+            
+        } while players[0].characters.contains(where: {$0.isAlive && $0.type != .magus})
+            && players[1].characters.contains(where: {$0.isAlive && $0.type != .magus})
+        print ("Fin des combats")
         // Répéter tant que les 2 équipes ont au moins un personnage vivant
         //      Afficher le récap des 2 équipes (noms + pv etc..)
         //      Joueur 1 sélectionne un perso de son équipe
