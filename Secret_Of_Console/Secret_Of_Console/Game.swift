@@ -66,9 +66,7 @@ class Game {
             typeCounter += 1
         }
         
-        
         let chosenCharacterType = chooseCharacterType()
-        
         
         print("Comment il/elle s'appelle ?")
         
@@ -126,22 +124,69 @@ class Game {
         }
     }
     
+    func chooseCharacter(at index: Int, in characters: [Character]) -> Character? {
+        guard index < characters.count else { return nil }
+        let character = characters[index]
+        return character
+    }
+    
+    func chosenIndex() -> Int {
+        //var index: Int
+        //guard let _index = readLine(), let _indexInt = Int(_index) else { return 0 }
+            //index = _indexInt
+        //récupérer l'entrée utilisateur et la transformer en index
+        //repeat while
+        var index: Int?
+        var chosenIndexCounter = 0
+        repeat {
+            if chosenIndexCounter >= 1 {
+                print("Merci de rentrer un numéro dans la liste")
+            }
+            if let _index = readLine() {
+                let _indexInt = Int(_index)
+                index = _indexInt
+            } else {
+                index = nil
+            }
+            chosenIndexCounter += 1
+        } while index == nil
+        return index!
+    }
+    
     func play() {
         repeat {
             let attacker = players[0]
             let defender = players[1]
-            let characterAttacker = attacker.characters[0]
-            let charaterDefender = defender.characters[0]
+            var targetedCharacter: Character?
             
-            charaterDefender.updateLife(with: characterAttacker.weapon.action)
-
             printRecap()
             
-            players.swapAt(0, 1)
+            print("\(attacker.name): veuillez sélectionner un de vos personnages: ")
+            attacker.characters.enumerated().forEach { (character) in
+                print("\(character.offset): \(character.element.description)")
+            }
+            let selectedCharacter = chooseCharacter(at: chosenIndex(), in: attacker.characters)
             
+            if selectedCharacter?.type == CharacterType.magus {
+                print("\(attacker.name): veuillez sélectionner un autre de vos personnages: ")
+                attacker.characters.enumerated().forEach { (character) in
+                    print("\(character.offset): \(character.element.description)")
+                }
+                targetedCharacter = chooseCharacter(at: chosenIndex(), in: attacker.characters)
+            } else {
+                print("\(attacker.name): veuillez sélectionner un personnage ennemi: ")
+                defender.characters.enumerated().forEach { (character) in
+                    print("\(character.offset): \(character.element.description)")
+                }
+                targetedCharacter = chooseCharacter(at: chosenIndex(), in: defender.characters)
+            }
+            if let action = selectedCharacter?.weapon.action {
+                targetedCharacter?.updateLife(with: action)
+            }
+            players.swapAt(0, 1)
         } while players[0].characters.contains(where: {$0.isAlive && $0.type != .magus})
-            && players[1].characters.contains(where: {$0.isAlive && $0.type != .magus})
-        print ("Fin des combats")
+             && players[1].characters.contains(where: {$0.isAlive && $0.type != .magus})
+        print("Fin des combats")
         // Répéter tant que les 2 équipes ont au moins un personnage vivant
         //      Afficher le récap des 2 équipes (noms + pv etc..)
         //      Joueur 1 sélectionne un perso de son équipe
