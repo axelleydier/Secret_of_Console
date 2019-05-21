@@ -12,6 +12,7 @@ class Game {
     
     static let maxPlayersNumber = 2
     static let maxCharactersNumber = 3
+    var nbTurn = 0
     
     var players: [Player] = []
     var names: [String] = []
@@ -22,7 +23,6 @@ class Game {
         play()
         end()
     }
-    
     func settings() {
         for playerIndex in 1...Game.maxPlayersNumber {
             
@@ -131,9 +131,6 @@ class Game {
     }
     
     func chosenIndex() -> Int {
-        //var index: Int
-        //guard let _index = readLine(), let _indexInt = Int(_index) else { return 0 }
-            //index = _indexInt
         //récupérer l'entrée utilisateur et la transformer en index
         //repeat while
         var index: Int?
@@ -160,6 +157,7 @@ class Game {
             var targetedCharacter: Character?
             
             printRecap()
+            print("Tour numéro \(nbTurn)")
             
             print("\(attacker.name): veuillez sélectionner un de vos personnages: ")
             attacker.characters.enumerated().forEach { (character) in
@@ -183,7 +181,11 @@ class Game {
             if let action = selectedCharacter?.weapon.action {
                 targetedCharacter?.updateLife(with: action)
             }
+            attacker.characters = deleteDeadCharacter(from: attacker.characters)
+            defender.characters = deleteDeadCharacter(from: defender.characters)
             players.swapAt(0, 1)
+            
+            nbTurn += 1
         } while players[0].characters.contains(where: {$0.isAlive && $0.type != .magus})
              && players[1].characters.contains(where: {$0.isAlive && $0.type != .magus})
         print("Fin des combats")
@@ -200,8 +202,15 @@ class Game {
         // On appelle la fin du jeu
     }
     
+    private func deleteDeadCharacter(from characters: [Character]) -> [Character] {
+        return characters.filter({ (character) -> Bool in
+            return character.isAlive
+        })
+    }
+    
     func end() {
         print("Fin du jeu")
+        print("Nombre de tours total: \(nbTurn)")
         // Afficher le récap total.
     }
 }

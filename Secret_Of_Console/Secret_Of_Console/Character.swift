@@ -78,7 +78,7 @@ class Character {
                 }
             }
         case .heal(value: let value):
-            if value > maxLife {
+            if (value + life) > maxLife {
                 self.life = maxLife
             } else {
                 self.life += value
