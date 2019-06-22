@@ -164,8 +164,13 @@ class Game {
                 print("\(character.offset): \(character.element.description)")
             }
             let selectedCharacter = chooseCharacter(at: chosenIndex(), in: attacker.characters)
+            //print("Oh ! Un coffre magique est apparu !")
             
-            if selectedCharacter?.type == CharacterType.magus {
+            //let magicChest = MagicChest()
+            //let weapon = magicChest.randomWeapon()
+            //selectedCharacter?.updateWeapon(with: weapon)
+            
+            if selectedCharacter?.type == .magus {
                 print("\(attacker.name): veuillez sélectionner un autre de vos personnages: ")
                 attacker.characters.enumerated().forEach { (character) in
                     print("\(character.offset): \(character.element.description)")
@@ -187,19 +192,13 @@ class Game {
             
             nbTurn += 1
         } while players[0].characters.contains(where: {$0.isAlive && $0.type != .magus})
-             && players[1].characters.contains(where: {$0.isAlive && $0.type != .magus})
+            && players[1].characters.contains(where: {$0.isAlive && $0.type != .magus})
         print("Fin des combats")
-        // Répéter tant que les 2 équipes ont au moins un personnage vivant
-        //      Afficher le récap des 2 équipes (noms + pv etc..)
-        //      Joueur 1 sélectionne un perso de son équipe
-        //      Arrivée aléatoire d'un coffre magique
-        //      Si personnage selectionné == mage {
-        //            Joueur 1 sélectionne un perso de son équipe
-        //      } sinon {
-        //            Joueur 1 sélectionne un perso de l'équipe adverse
-        //      }
-        //      Résolution de l'action/du combat
-        // On appelle la fin du jeu
+        if players[0].characters.contains(where: { !$0.isAlive && $0.type != .magus }) {
+            print("\(players[0].name) a gagné !!")
+        } else {
+            print("\(players[1].name) a gagné !!")
+        }
     }
     
     private func deleteDeadCharacter(from characters: [Character]) -> [Character] {

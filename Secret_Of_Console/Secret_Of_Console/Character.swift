@@ -49,19 +49,19 @@ class Character {
         self.type = type
         switch type {
         case .magus:
-            self.weapon = Weapon(type: .Scepter)
+            self.weapon = Weapon(type: .scepter)
             self.life = 120
             self.maxLife = 120
         case .colossus:
-            self.weapon = Weapon(type: .Mass)
+            self.weapon = Weapon(type: .mass)
             self.life = 200
             self.maxLife = 200
         case .dwarf:
-            self.weapon = Weapon(type: .Axe)
+            self.weapon = Weapon(type: .axe)
             self.life = 50
             self.maxLife = 50
         case .warrior:
-            self.weapon = Weapon(type: .Sword)
+            self.weapon = Weapon(type: .sword)
             self.life = 100
             self.maxLife = 100
         }
@@ -83,6 +83,14 @@ class Character {
             } else {
                 self.life += value
             }
+        }
+    }
+    func updateWeapon(with weapon: Weapon?) {
+        guard let weapon = weapon else { return }
+        if self.type == .magus, case .heal = weapon.action {
+            self.weapon = weapon
+        } else if self.type != .magus, case .damage = weapon.action {
+            self.weapon = weapon
         }
     }
 }

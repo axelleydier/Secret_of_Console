@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+class MagicChest {
+    private var weapons: [Weapon] = []
+    
+    init() {
+        weapons = [Weapon(type: .bow),
+                   Weapon(type: .masterSword),
+                   Weapon(type: .healScepter),
+                   Weapon(type: .durandilAxe)]
+    }
+    
+    func randomWeapon() -> Weapon? {
+        let result = Int.random(in: 0...20)
+        guard result < weapons.count else { return nil }
+        return weapons[result]
+    }
+}
