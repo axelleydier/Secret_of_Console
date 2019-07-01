@@ -19,7 +19,7 @@ class MagicChest {
     }
     
     func randomWeapon() -> Weapon? {
-        let result = Int.random(in: 0...4)
+        let result = Int.random(in: 0...20)
         guard result < weapons.count else { return nil }
         return weapons[result]
     }
