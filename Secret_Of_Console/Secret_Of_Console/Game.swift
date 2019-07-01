@@ -164,14 +164,20 @@ class Game {
                 print("\(character.offset): \(character.element.description)")
             }
             let selectedCharacter = chooseCharacter(at: chosenIndex(), in: attacker.characters)
-            //print("Oh ! Un coffre magique est apparu !")
             
-            //let magicChest = MagicChest()
-            //let weapon = magicChest.randomWeapon()
-            //selectedCharacter?.updateWeapon(with: weapon)
+            
+            let magicChest = MagicChest()
+            if let weapon = magicChest.randomWeapon() {
+                print("Oh ! Un coffre magique est apparu !")
+                selectedCharacter?.updateWeapon(with: weapon, callback: {
+                    print("\(selectedCharacter!.name) a recu \(weapon.name)")
+                })
+            } else {
+                print("Il ne s'est rien passé")
+            }
             
             if selectedCharacter?.type == .magus {
-                print("\(attacker.name): veuillez sélectionner un autre de vos personnages: ")
+                print("\(attacker.name): veuillez sélectionner un de vos personnages à soigner ")
                 attacker.characters.enumerated().forEach { (character) in
                     print("\(character.offset): \(character.element.description)")
                 }
@@ -194,7 +200,7 @@ class Game {
         } while players[0].characters.contains(where: {$0.isAlive && $0.type != .magus})
             && players[1].characters.contains(where: {$0.isAlive && $0.type != .magus})
         print("Fin des combats")
-        if players[0].characters.contains(where: { !$0.isAlive && $0.type != .magus }) {
+        if players[0].characters.contains(where: { $0.isAlive && $0.type != .magus }) {
             print("\(players[0].name) a gagné !!")
         } else {
             print("\(players[1].name) a gagné !!")
@@ -210,6 +216,6 @@ class Game {
     func end() {
         print("Fin du jeu")
         print("Nombre de tours total: \(nbTurn)")
-        // Afficher le récap total.
+        printRecap()
     }
 }

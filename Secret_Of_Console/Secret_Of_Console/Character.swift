@@ -85,12 +85,14 @@ class Character {
             }
         }
     }
-    func updateWeapon(with weapon: Weapon?) {
+    func updateWeapon(with weapon: Weapon?, callback: () -> Void) {
         guard let weapon = weapon else { return }
         if self.type == .magus, case .heal = weapon.action {
             self.weapon = weapon
+            callback()
         } else if self.type != .magus, case .damage = weapon.action {
             self.weapon = weapon
+            callback()
         }
     }
 }

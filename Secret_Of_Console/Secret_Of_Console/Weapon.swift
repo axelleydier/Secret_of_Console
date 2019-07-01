@@ -24,21 +24,21 @@ enum WeaponType {
     var description: String {
         switch self {
         case .sword:
-            return "Epee"
+            return "l'Epee ⚔️"
         case .scepter:
-            return "Sceptre"
+            return "le Sceptre 🝏"
         case .mass:
-            return "Masse"
+            return "la Masse 🔨"
         case .axe:
-            return "Hache"
+            return "la Hache"
         case .bow:
-            return "Arc"
+            return "l'Arc 🏹"
         case .masterSword:
-            return "MasterSword"
+            return "la MasterSword"
         case .healScepter:
-            return "Sceptre Ultime"
+            return "le Sceptre Ultime 🔱"
         case .durandilAxe:
-            return "Hache de Durandil"
+            return "la Hache de Durandil"
         }
     }
 }
