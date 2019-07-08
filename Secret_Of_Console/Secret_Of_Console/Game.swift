@@ -82,7 +82,7 @@ class Game {
         var characterTypeCounter = 0
         repeat {
             if characterTypeCounter >= 1 {
-                print("Merci de rentrer de choisir un numéro dans la liste")
+                print("Merci de choisir un numéro dans la liste")
             }
             if let stringInput = readLine() {
                 if let characterType = CharacterType(choice: stringInput) {
@@ -131,8 +131,6 @@ class Game {
     }
     
     func chosenIndex() -> Int {
-        //récupérer l'entrée utilisateur et la transformer en index
-        //repeat while
         var index: Int?
         var chosenIndexCounter = 0
         repeat {
