@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D2C15BF229EE87F002F66AB /* MagicChest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C15BE229EE87F002F66AB /* MagicChest.swift */; };
 		1DD094EF21FB4971003A87AE /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD094EE21FB4971003A87AE /* Character.swift */; };
 		1DD094F121FB49FD003A87AE /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD094F021FB49FD003A87AE /* Weapon.swift */; };
 		1DD094F321FB4AEB003A87AE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD094F221FB4AEB003A87AE /* Game.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D2C15BE229EE87F002F66AB /* MagicChest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicChest.swift; sourceTree = "<group>"; };
 		1DD094EE21FB4971003A87AE /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		1DD094F021FB49FD003A87AE /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		1DD094F221FB4AEB003A87AE /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				1DDE042E21F86F5F00F5E521 /* main.swift */,
+				1D2C15BE229EE87F002F66AB /* MagicChest.swift */,
 				1DD094F421FB4AFC003A87AE /* Player.swift */,
 				1DD094F221FB4AEB003A87AE /* Game.swift */,
 				1DD094F021FB49FD003A87AE /* Weapon.swift */,
@@ -106,6 +109,7 @@
 				TargetAttributes = {
 					1DDE042A21F86F5E00F5E521 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -115,6 +119,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 1DDE042221F86F5E00F5E521;
 			productRefGroup = 1DDE042C21F86F5F00F5E521 /* Products */;
@@ -132,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DDE042F21F86F5F00F5E521 /* main.swift in Sources */,
+				1D2C15BF229EE87F002F66AB /* MagicChest.swift in Sources */,
 				1DD094EF21FB4971003A87AE /* Character.swift in Sources */,
 				1DD094F121FB49FD003A87AE /* Weapon.swift in Sources */,
 				1DD094F521FB4AFC003A87AE /* Player.swift in Sources */,
@@ -262,7 +268,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -271,7 +277,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
